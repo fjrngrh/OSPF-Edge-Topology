@@ -1,0 +1,1 @@
+Formatting '/home/arsalan/OSPF-Edge-Topology/OSPF_Edge_Topology/project-files/qemu/9f71646a-6311-4cd6-8bd4-fdf1581a8de6/hdb_disk.qcow2', fmt=qcow2 cluster_size=65536 extended_l2=off compression_type=zlib size=1048576 backing_file=/home/arsalan/GNS3/images/QEMU/IOSv_startup_config.img backing_fmt=raw lazy_refcounts=off refcount_bits=16

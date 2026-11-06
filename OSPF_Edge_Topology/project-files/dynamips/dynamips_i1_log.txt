@@ -1,0 +1,18 @@
+2026-11-06T14:01:30.517Z HYPERVISOR: Release 0.2.25-amd64/Linux (tag 2023010200)
+2026-11-06T14:01:30.526Z HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 44711.
+2026-11-06T14:01:30.526Z HYPERVISOR: exec_cmd: hypervisor version 
+2026-11-06T14:01:30.526Z HYPERVISOR: exec_cmd: hypervisor working_dir /home/arsalan/OSPF-Edge-Topology/OSPF_Edge_Topology/project-files/dynamips 
+2026-11-06T14:01:30.526Z GENERAL: working_dir=/home/arsalan/OSPF-Edge-Topology/OSPF_Edge_Topology/project-files/dynamips
+2026-11-06T14:01:30.527Z HYPERVISOR: exec_cmd: ethsw create Switch1 
+2026-11-06T14:01:41.802Z HYPERVISOR: exec_cmd: nio create_udp udp-81f490cf-094b-40bc-a638-d549bde7eb88 10005 127.0.0.1 10004 
+2026-11-06T14:01:41.802Z HYPERVISOR: exec_cmd: ethsw add_nio Switch1 udp-81f490cf-094b-40bc-a638-d549bde7eb88 
+2026-11-06T14:01:41.810Z HYPERVISOR: exec_cmd: ethsw set_access_port Switch1 udp-81f490cf-094b-40bc-a638-d549bde7eb88 1 
+2026-11-06T14:01:48.331Z HYPERVISOR: exec_cmd: nio create_udp udp-be64457b-d494-4540-84de-f20a95209c13 10007 127.0.0.1 10006 
+2026-11-06T14:01:48.331Z HYPERVISOR: exec_cmd: ethsw add_nio Switch1 udp-be64457b-d494-4540-84de-f20a95209c13 
+2026-11-06T14:01:48.333Z HYPERVISOR: exec_cmd: ethsw set_access_port Switch1 udp-be64457b-d494-4540-84de-f20a95209c13 1 
+2026-11-06T14:01:54.235Z HYPERVISOR: exec_cmd: nio create_udp udp-87c7cd8a-27d6-48c8-ab46-7480a5aa9387 10009 127.0.0.1 10008 
+2026-11-06T14:01:54.236Z HYPERVISOR: exec_cmd: ethsw add_nio Switch1 udp-87c7cd8a-27d6-48c8-ab46-7480a5aa9387 
+2026-11-06T14:01:54.255Z HYPERVISOR: exec_cmd: ethsw set_access_port Switch1 udp-87c7cd8a-27d6-48c8-ab46-7480a5aa9387 1 
+2026-11-06T14:02:19.230Z HYPERVISOR: exec_cmd: nio create_udp udp-64bda17f-6f01-4220-83ba-efbc95f73ca2 10010 127.0.0.1 10011 
+2026-11-06T14:02:19.231Z HYPERVISOR: exec_cmd: ethsw add_nio Switch1 udp-64bda17f-6f01-4220-83ba-efbc95f73ca2 
+2026-11-06T14:02:19.242Z HYPERVISOR: exec_cmd: ethsw set_access_port Switch1 udp-64bda17f-6f01-4220-83ba-efbc95f73ca2 1 

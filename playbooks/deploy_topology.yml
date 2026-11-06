@@ -1,0 +1,100 @@
+---
+# ==========================================
+# PLAY 1: R1 (Edge Router)
+# ==========================================
+- name: Konfigurasi R1 - Edge Router OSPF
+  hosts: R1
+  gather_facts: false
+  tasks:
+    - name: Konfigurasi Interface GigabitEthernet0/0 dan Loopback 0
+      cisco.ios.ios_config:
+        lines:
+          - ip address 10.1.1.1 255.255.255.252
+          - no shutdown
+        parents: interface GigabitEthernet0/0
+    
+    - name: Konfigurasi IP Loopback 0 (Simulasi Internet)
+      cisco.ios.ios_config:
+        lines:
+          - ip address 8.8.8.8 255.255.255.255
+        parents: interface loopback 0
+
+    - name: Buat Default Route Statis ke Internet
+      cisco.ios.ios_config:
+        lines:
+          - ip route 0.0.0.0 0.0.0.0 loopback 0
+
+    - name: Konfigurasi OSPF Area 0 & Injeksi Default Route
+      cisco.ios.ios_config:
+        lines:
+          - router-id 1.1.1.1
+          - network 10.1.1.0 0.0.0.3 area 0
+          - default-information originate
+        parents: router ospf 1
+        match: exact
+
+# ==========================================
+# PLAY 2: R2 (Internal Router)
+# ==========================================
+- name: Konfigurasi R2 - Internal Backbone
+  hosts: R2
+  gather_facts: false
+  tasks:
+    - name: Konfigurasi Arah R1 (GigabitEthernet0/0)
+      cisco.ios.ios_config:
+        lines:
+          - ip address 10.1.1.2 255.255.255.252
+          - no shutdown
+        parents: interface GigabitEthernet0/0
+
+    - name: Konfigurasi Arah R3 (GigabitEthernet0/1)
+      cisco.ios.ios_config:
+        lines:
+          - ip address 10.1.2.1 255.255.255.252
+          - no shutdown
+        parents: interface GigabitEthernet0/1
+
+    - name: Konfigurasi LAN Internal R2 (Loopback 0)
+      cisco.ios.ios_config:
+        lines:
+          - ip address 192.168.10.1 255.255.255.0
+        parents: interface loopback 0
+
+    - name: Konfigurasi OSPF R2 untuk semua segmen
+      cisco.ios.ios_config:
+        lines:
+          - router-id 2.2.2.2
+          - network 10.1.1.0 0.0.0.3 area 0
+          - network 10.1.2.0 0.0.0.3 area 0
+          - network 192.168.10.0 0.0.0.255 area 0
+        parents: router ospf 1
+        match: exact
+
+# ==========================================
+# PLAY 3: R3 (Router Ujung)
+# ==========================================
+- name: Konfigurasi R3 - Router Ujung
+  hosts: R3
+  gather_facts: false
+  tasks:
+    - name: Konfigurasi Arah R2 (GigabitEthernet0/0)
+      cisco.ios.ios_config:
+        lines:
+          - ip address 10.1.2.2 255.255.255.252
+          - no shutdown
+        parents: interface GigabitEthernet0/0
+
+    - name: Konfigurasi LAN Internal R3 (Loopback 0)
+      cisco.ios.ios_config:
+        lines:
+          - ip address 192.168.20.1 255.255.255.0
+        parents: interface loopback 0
+
+    - name: Konfigurasi OSPF R3
+      cisco.ios.ios_config:
+        lines:
+          - router-id 3.3.3.3
+          - network 10.1.2.0 0.0.0.3 area 0
+          - network 192.168.20.0 0.0.0.255 area 0
+        parents: router ospf 1
+        match: exact
