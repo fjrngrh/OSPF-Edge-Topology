@@ -17,9 +17,6 @@ It demonstrates **Infrastructure as Code (IaC)** best practices by decoupling th
 ![GNS3 Topology](assets/gns3-topology.png)
 *Figure 1: GNS3 Network Topology Setup*
 
-![Ansible Execution Result](assets/ansible-result.png)
-*Figure 2: Ansible Playbook Execution Result (PLAY RECAP: failed=0)*
-
 ---
 
 ### 🛠️ Key Features
@@ -83,9 +80,6 @@ Arsitektur ini menerapkan prinsip **Infrastructure as Code (IaC)** dengan memisa
 
 ![Topologi GNS3](assets/gns3-topology.png)
 *Gambar 1: Topologi GNS3 (Data Plane OSPF & Management Plane NAT)*
-
-![Hasil Playbook Ansible](assets/ansible-result.png)
-*Gambar 2: Hasil Eksekusi Ansible Playbook (PLAY RECAP: failed=0)*
 
 ---
 
